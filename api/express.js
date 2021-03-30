@@ -4,6 +4,7 @@ const port = 9000;
 const pgp = require('pg-promise')({});
 const db = pgp('postgres://localhost:5432/address_book');
 const cors = require('cors');
+app.use(express.json());
 
 // express server
 app.get('/', (req, res) => {
@@ -53,7 +54,6 @@ app.post('/contacts', (req, res) => {
   console.log(data);
   res.set('Access-Control-Allow-Origin', '*');
   db.one('INSERT INTO contacts (first_name, last_name, phone_number, email) values (\$1, \$2, \$3, \$4) RETURNING first_name, last_name, phone_number, email', [
-    data.id,
     data.firstName,
     data.lastName,
     data.phoneNum,
