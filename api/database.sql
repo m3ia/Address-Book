@@ -9,3 +9,7 @@ CREATE TABLE contacts(
 );
 
 ALTER TABLE individuals RENAME TO contacts;
+
+INSERT INTO contacts (
+  contact_id, first_name, last_name, phone_number, email
+  ) VALUES ('1', 'Meia', 'May', '5555555', 'hi@hi.com');
